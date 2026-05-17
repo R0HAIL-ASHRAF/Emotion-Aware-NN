@@ -1,0 +1,6 @@
+venv/
+downloads/
+clips/
+downloaded.txt
+__pycache__/
+
