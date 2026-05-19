@@ -27,7 +27,7 @@ def cross_entropy(pred, true):
 
 input_size = X.shape[2]
 hidden_size = 64
-output_size = 6
+output_size = 5
 
 model = LSTM(input_size, hidden_size, output_size)
 

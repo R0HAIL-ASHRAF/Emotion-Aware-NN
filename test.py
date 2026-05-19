@@ -23,7 +23,6 @@ emotion_labels = {
     2: "sad",
     3: "neutral",
     4: "fear",
-    5: "surprise",
 }
 
 
@@ -62,7 +61,7 @@ print(f"FINAL ACCURACY: {accuracy:.2f}%")
 print("=" * 50)
 
 
-conf_matrix = np.zeros((6, 6), dtype=int)
+conf_matrix = np.zeros((5, 5), dtype=int)
 
 for actual, predicted in zip(all_actuals, all_predictions):
     conf_matrix[actual][predicted] += 1
@@ -78,14 +77,13 @@ plt.title("Confusion Matrix")
 plt.xlabel("Predicted Label")
 plt.ylabel("Actual Label")
 
-emotion_names = ["angry", "happy", "sad", "neutral", "fear", "surprise"]
+emotion_names = ["angry", "happy", "sad", "neutral", "fear"]
 
-plt.xticks(range(6), emotion_names, rotation=45)
-plt.yticks(range(6), emotion_names)
+plt.xticks(range(5), emotion_names, rotation=45)
+plt.yticks(range(5), emotion_names)
 
-# Annotate values
-for i in range(6):
-    for j in range(6):
+for i in range(5):
+    for j in range(5):
         plt.text(j, i, conf_matrix[i, j], ha="center", va="center")
 
 plt.savefig("graphs/confusion_matrix.png")
