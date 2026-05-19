@@ -10,39 +10,35 @@ def softmax(x):
     exp_x = np.exp(x - np.max(x))
     return exp_x / np.sum(exp_x)
 
-
-
 class LSTM:
+    def __init__(self, input_sz, hidden_sz, output_sz):
 
-    def __init__(self, input_size, hidden_size, output_size):
+        self.input_sz = input_sz
+        self.hidden_sz = hidden_sz
 
-        self.input_size = input_size
-        self.hidden_size = hidden_size
+        limit = np.sqrt(1 / input_sz)
 
-        limit = np.sqrt(1 / input_size)
+        self.Wf = np.random.randn(hidden_sz, input_sz) * limit
+        self.bf = np.zeros((hidden_sz, 1))
 
-        self.Wf = np.random.randn(hidden_size, input_size) * limit
-        self.bf = np.zeros((hidden_size, 1))
+        self.Wi = np.random.randn(hidden_sz, input_sz) * limit
+        self.bi = np.zeros((hidden_sz, 1))
 
-        self.Wi = np.random.randn(hidden_size, input_size) * limit
-        self.bi = np.zeros((hidden_size, 1))
+        self.Wc = np.random.randn(hidden_sz, input_sz) * limit
+        self.bc = np.zeros((hidden_sz, 1))
 
-        self.Wc = np.random.randn(hidden_size, input_size) * limit
-        self.bc = np.zeros((hidden_size, 1))
+        self.Wo = np.random.randn(hidden_sz, input_sz) * limit
+        self.bo = np.zeros((hidden_sz, 1))
 
-        self.Wo = np.random.randn(hidden_size, input_size) * limit
-        self.bo = np.zeros((hidden_size, 1))
-
-        self.Wy = np.random.randn(output_size, hidden_size) * limit
-        self.by = np.zeros((output_size, 1))
-
+        self.Wy = np.random.randn(output_sz, hidden_sz) * limit
+        self.by = np.zeros((output_sz, 1))
 
     def forward(self, X):
 
         T = X.shape[1]
 
-        self.h = np.zeros((self.hidden_size, 1))
-        self.c = np.zeros((self.hidden_size, 1))
+        self.h = np.zeros((self.hidden_sz, 1))
+        self.c = np.zeros((self.hidden_sz, 1))
 
         for t in range(T):
 
@@ -63,7 +59,7 @@ class LSTM:
         y_pred = softmax(self.Wy @ self.h + self.by)
 
         return y_pred
-    
+
     def predict(self, X):
         y_pred = self.forward(X)
         return np.argmax(y_pred)

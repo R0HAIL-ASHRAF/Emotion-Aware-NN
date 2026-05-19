@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
-
 with open("lstm_model.pkl", "rb") as f:
     model = pickle.load(f)
 
@@ -24,7 +23,7 @@ emotion_labels = {
     2: "sad",
     3: "neutral",
     4: "fear",
-    5: "surprise"
+    5: "surprise",
 }
 
 
@@ -79,14 +78,7 @@ plt.title("Confusion Matrix")
 plt.xlabel("Predicted Label")
 plt.ylabel("Actual Label")
 
-emotion_names = [
-    "angry",
-    "happy",
-    "sad",
-    "neutral",
-    "fear",
-    "surprise"
-]
+emotion_names = ["angry", "happy", "sad", "neutral", "fear", "surprise"]
 
 plt.xticks(range(6), emotion_names, rotation=45)
 plt.yticks(range(6), emotion_names)
@@ -94,8 +86,7 @@ plt.yticks(range(6), emotion_names)
 # Annotate values
 for i in range(6):
     for j in range(6):
-        plt.text(j, i, conf_matrix[i, j],
-                 ha="center", va="center")
+        plt.text(j, i, conf_matrix[i, j], ha="center", va="center")
 
 plt.savefig("graphs/confusion_matrix.png")
 plt.close()
@@ -103,10 +94,12 @@ plt.close()
 print("Confusion matrix saved to graphs/confusion_matrix.png")
 
 
-results = pd.DataFrame({
-    "Actual": [emotion_labels[x] for x in all_actuals],
-    "Predicted": [emotion_labels[x] for x in all_predictions]
-})
+results = pd.DataFrame(
+    {
+        "Actual": [emotion_labels[x] for x in all_actuals],
+        "Predicted": [emotion_labels[x] for x in all_predictions],
+    }
+)
 
 results.to_csv("graphs/predictions.csv", index=False)
 

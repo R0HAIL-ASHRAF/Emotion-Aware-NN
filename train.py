@@ -4,7 +4,6 @@ import pickle
 from lstm_model import LSTM
 import os
 
-
 X = np.load("data/X.npy")
 y = np.load("data/y.npy")
 
@@ -17,8 +16,10 @@ y = y[indices]
 print("X shape:", X.shape)
 print("y shape:", y.shape)
 
+
 def one_hot(y, num_classes):
     return np.eye(num_classes)[y]
+
 
 def cross_entropy(pred, true):
     return -np.sum(true * np.log(pred + 1e-9))
@@ -61,9 +62,6 @@ for epoch in range(epochs):
     print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}")
 
 
-
-
-
 plt.plot(loss_history)
 plt.title("Training Loss")
 plt.xlabel("Epoch")
@@ -76,7 +74,6 @@ plt.savefig(save_path)
 plt.close()
 
 print(f"Loss graph saved at: {save_path}")
-
 
 
 with open("lstm_model.pkl", "wb") as f:
