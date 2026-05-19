@@ -1,6 +1,9 @@
 venv/
 downloads/
-clips/
+labelling.py
 downloaded.txt
 __pycache__/
+clips/
+download_and_split.py
+lstm_model.pkl
 

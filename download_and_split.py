@@ -8,10 +8,15 @@ from tqdm import tqdm
 # =========================
 
 YOUTUBE_URLS = [
-    # Add YouTube URLs here
 #     "https://www.youtube.com/watch?v=S4ydSSwu1Ws", 
 #     "https://www.youtube.com/watch?v=djUiWYzCRFI", 
-    "https://www.youtube.com/watch?v=5jnEizYzQl0"
+    # "https://www.youtube.com/watch?v=5jnEizYzQl0"
+    # "https://www.youtube.com/watch?v=z5XdX_ryHoc", 
+    # "https://www.youtube.com/watch?v=OC48yGWuVNY&list=PLdJ0-R0hxLDNmcI3wJLE2sgN7hTCwtMAp"
+    "https://www.youtube.com/watch?v=CgbYmfvfc0k",
+    "https://www.youtube.com/watch?v=SIevRg-qBNo", 
+    "https://www.youtube.com/watch?v=_u2qggffbYM",
+    "https://www.youtube.com/watch?v=7JI-uvmH0jA"
 ]
 
 DOWNLOAD_DIR = "downloads"
